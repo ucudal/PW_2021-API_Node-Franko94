@@ -1,3 +1,4 @@
+<script type="module" src="./entities.js"></script>
 import { empresa } from './entities';
 var express = require('express');
 
