@@ -1,17 +1,28 @@
 const empresa = [{
-  nombre: "Globant",
-  descripcion: "cosas de globant"
+  empresa: "Globant",
+  puesto: "dev",
+  descripcion: "cosas de globant",
+  fechaInicio: new Date("2019-11-03"),
+  fechaFin: new Date("2020-11-03"),
 },
 {
-  nombre: "Porto",
-  descripcion: "cosas de porto"
+  empresa: "Porto",
+  puesto: "dev",
+  descripcion: "cosas de porto",
+  fechaInicio: new Date("2019-11-03"),
+  fechaFin: new Date("2020-11-03"),
 }
 ]
 
 
+
 var express = require('express');
+const cors = require('cors')
 
 var app = express();
+
+
+app.use(cors({ origin: "http://localhost:3000/", credentials: true }));
 
 app.get('/globant', function(req, res) {
   empresa.forEach(element => {
@@ -33,8 +44,8 @@ app.get('/porto', function(req, res) {
   res.send("No se encontro datos de la empresa")
 });
 
-app.listen(process.env.PORT || 3000, (a) => {
-  console.log("Servidor disponible en http://localhost:3000")
+app.listen(process.env.PORT || 8080, (a) => {
+  console.log("Servidor disponible en http://localhost:3001")
 });
  
 module.exports = app;
