@@ -26,7 +26,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 app.get('/globant', function(req, res) {
   empresa.forEach(element => {
-    if(element.nombre === "Globant"){
+    if(element.empresa === "Globant"){
       res.send(element)
     }
 
@@ -36,12 +36,19 @@ app.get('/globant', function(req, res) {
 
 app.get('/porto', function(req, res) {
   empresa.forEach(element => {
-    if(element.nombre === "Porto"){
+    if(element.empresa === "Porto"){
       res.send(element)
     }
 
   });
   res.send("No se encontro datos de la empresa")
+});
+
+app.post('/contacto',function(req,res){
+  res.send(req.query.nombreContacto)
+  res.cookie("PW_2021-CV_Contacto", req.query.nombreContactoa, {
+    httpOnly: true,
+  });
 });
 
 app.listen(process.env.PORT || 8080, (a) => {
