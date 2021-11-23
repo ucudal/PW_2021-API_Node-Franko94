@@ -14,8 +14,6 @@ const empresa = [{
 }
 ]
 
-
-
 var express = require('express');
 const cors = require('cors')
 
@@ -44,11 +42,18 @@ app.get('/porto', function(req, res) {
   res.send("No se encontro datos de la empresa")
 });
 
-app.post('/contacto',function(req,res){
-  res.send(req.query.nombreContacto)
-  res.cookie("PW_2021-CV_Contacto", req.query.nombreContactoa, {
+app.get('/experiencia-laboral', function(req, res) {
+      res.send(element)
+});
+
+
+app.post('/enviar-formulario',function(req,res){
+  res.cookie("PW_2021-CV_Contacto", req.query.nombreContacto, {
     httpOnly: true,
+    sameSite: false
   });
+  res.send(req.query.nombreContacto)
+
 });
 
 app.listen(process.env.PORT || 8080, (a) => {
