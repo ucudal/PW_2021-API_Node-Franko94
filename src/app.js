@@ -49,10 +49,9 @@ app.get('/experiencia-laboral', function(req, res) {
 
 app.post('/enviar-formulario',function(req,res){
   res.cookie("PW_2021-CV_Contacto", req.query.nombreContacto, {
-    httpOnly: true,
-    sameSite: false
+    httpOnly: true
   });
-  res.send(req.query.nombreContacto)
+  res.send("OK")
 
 });
 
